@@ -14,7 +14,9 @@ public class IOManager {
             String json = IOUtil.toString(br);
             return json;
         } catch (IOException e) {
-            throw new IOException("Json не найден");
+            System.err.println("JSON не найден или некорректно указан путь" + "\n" + "EXIT");
+            System.exit(1);
+            return null;
         }
     }
 
@@ -24,7 +26,7 @@ public class IOManager {
                 (new OutputStreamWriter(new FileOutputStream(outputPath), UTF_8))){
             bw.write(json);
         }catch (IOException e){
-            e.printStackTrace();
+            System.err.println("Неизвестная ошибка записи");
         }
     }
 }
