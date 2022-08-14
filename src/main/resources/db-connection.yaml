@@ -1,0 +1,3 @@
+db_PASS: "postgres"
+db_USER: "postgres"
+db_URL: "jdbc:postgresql://localhost:5433/postgres"

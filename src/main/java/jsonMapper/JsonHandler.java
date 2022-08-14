@@ -3,6 +3,7 @@ package jsonMapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.type.TypeFactory;
 import domain.input.inputData.InputData;
 import domain.input.inputData.criteria.Criteria;
@@ -10,7 +11,7 @@ import domain.input.inputData.criteria.NotDetermined;
 import domain.input.inputData.stat.Statistic;
 import exceptions.JsonDataException;
 import exceptions.JsonParamException;
-import responses.interfaces.Responce;
+import responses.interfaces.Response;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,7 @@ public class JsonHandler {
         outputMapper = mapper;
     }
 
-    public static InputData readJsonFile(String param, String json) throws Exception {
+    public InputData readJsonFile(String param, String json) throws Exception {
         switch (param) {
             case "search":
                 try {
@@ -41,12 +42,10 @@ public class JsonHandler {
             case "stat":
                 try {
                     Statistic stat = inputMapper.readValue(json, Statistic.class);
-                    if (stat.getStartDate().before(stat.getEndDate())) {
-                        throw new JsonDataException("stat: endDate не может быть после startDate");
+                    if (stat.getStartDate().isAfter(stat.getEndDate())) {
+                        throw new JsonDataException("stat: startDate не может быть после endDate");
                     }
-                    ArrayList<InputData> statList = new ArrayList<>();
-                    statList.add(stat);
-                    return InputData.inputDataBuilder(statList);
+                    return stat;
                 } catch (JsonProcessingException e) {
                     throw new JsonDataException("Не корректный запрос поиска в json для stat");
                 }
@@ -55,7 +54,7 @@ public class JsonHandler {
         }
     }
 
-    public static String createResponseJson(Responce response) {
+    public String createResponseJson(Response response) {
         try {
             return outputMapper.writerWithDefaultPrettyPrinter().writeValueAsString(response);
         } catch (JsonProcessingException e) {
@@ -72,10 +71,12 @@ public class JsonHandler {
             Class clazz = Criteria.getClassType(nodeString);
             if(clazz == null){
                 Criteria failCriteria = new NotDetermined(nodeString);
+                failCriteria.setCriteria(nodeString);
                 criteries.add(failCriteria);
             } else {
                 Criteria criteria = inputMapper.readValue(nodeString,
                         typeFactory.constructFromCanonical(clazz.getCanonicalName()));
+                criteria.setCriteria(nodeString);
                 criteries.add(criteria);
             }
         }
