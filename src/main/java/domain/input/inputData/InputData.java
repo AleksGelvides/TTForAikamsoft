@@ -5,18 +5,18 @@ import domain.input.inputData.criteria.Criteria;
 import java.util.List;
 
 public class InputData {
-    private List<? extends InputData> inputData;
+    private List<Criteria> criteriaList;
 
-    public static InputData inputDataBuilder(List<? extends InputData> inputDataList){
+    public static InputData inputDataBuilder(List<Criteria> criteriaList){
         InputData inputData = new InputData();
-        inputData.setInputData(inputDataList);
+        inputData.setCriteriaList(criteriaList);
         return inputData;
     }
-    private void setInputData(List<? extends InputData> inputData) {
-        this.inputData = inputData;
+    private void setCriteriaList(List<Criteria> criteriaList) {
+        this.criteriaList = criteriaList;
     }
 
-    public List<? extends InputData> getInputData() {
-        return inputData;
+    public List<Criteria> getCriteriaList() {
+        return criteriaList;
     }
 }

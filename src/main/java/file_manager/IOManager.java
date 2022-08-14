@@ -24,7 +24,9 @@ public class IOManager {
         String outputPath = path.replaceAll("input", "output");
         try(BufferedWriter bw = new BufferedWriter
                 (new OutputStreamWriter(new FileOutputStream(outputPath), UTF_8))){
-            bw.write(json);
+            bw.write(json.replaceAll("\"\\{","{")
+                    .replaceAll("}\"", "}")
+                    .replaceAll("\\\\", ""));
         }catch (IOException e){
             System.err.println("Неизвестная ошибка записи");
         }

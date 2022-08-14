@@ -7,6 +7,7 @@ import java.util.Map;
 
 public abstract class Criteria extends InputData {
     private static final Map<String, Class> classMap = new HashMap<>();
+    private String criteriaName;
 
     static{
         classMap.put("{lastName}", LastNameCriteria.class);
@@ -30,5 +31,13 @@ public abstract class Criteria extends InputData {
                     .replaceAll(":.*", "") + "}");
         }
         return classMap.get(keys.toString());
+    }
+
+    public void setCriteria(String criteria){
+        this.criteriaName = criteria;
+    }
+
+    public String getCriteriaName(){
+        return this.criteriaName;
     }
 }

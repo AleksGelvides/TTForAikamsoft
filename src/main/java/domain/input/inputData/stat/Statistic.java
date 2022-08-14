@@ -1,34 +1,34 @@
 package domain.input.inputData.stat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import domain.input.inputData.InputData;
+import domain.input.inputData.criteria.Criteria;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 
 public class Statistic extends InputData {
-    private Date startDate;
-    private Date endDate;
+
+    private LocalDate startDate;
+    private LocalDate endDate;
 
     public Statistic(@JsonProperty("startDate") Date startDate,
                      @JsonProperty("endDate") Date endDate) {
-        this.startDate = startDate;
-        this.endDate = endDate;
+        this.startDate = LocalDate.from(startDate.toInstant().atZone(ZoneId.systemDefault()));
+        this.endDate = LocalDate.from(endDate.toInstant().atZone(ZoneId.systemDefault()));
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 }
