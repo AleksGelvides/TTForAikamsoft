@@ -8,6 +8,8 @@
 2) Разверните базу данных: `docker run --name postgres -p 5433:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=postgres -d postgres:14` - эта команда нужна для развертывания базы данных в контейнере *Docker*
 3) `mvn liquibase:update` - эта команда нужна для того, что бы заполнить базу данных.
 
+*После заполнения рекомендую получить таблицы из бд: `buyer` и `product` что бы написать корректный JSON запрос*
+
 ### Обратите внимание: для запуска проекта необходим **maven 4.0.0**  
 
 ---
