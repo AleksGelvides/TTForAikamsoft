@@ -13,6 +13,7 @@ import exceptions.JsonDataException;
 import exceptions.JsonParamException;
 import responses.interfaces.Response;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,7 +64,7 @@ public class JsonHandler {
         }
     }
 
-    private static List<Criteria> findAllCriterias(JsonNode node) throws JsonProcessingException {
+    private static List<Criteria> findAllCriterias(JsonNode node) throws IOException {
         ArrayList<Criteria> criteries = new ArrayList<>();
         for (int counter = 0; counter <= node.size() - 1; counter++) {
             String nodeString = node.get(counter).toString();

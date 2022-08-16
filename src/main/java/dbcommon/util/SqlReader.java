@@ -2,7 +2,6 @@ package dbcommon.util;
 
 import org.codehaus.plexus.util.IOUtil;
 
-import javax.print.DocFlavor;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;

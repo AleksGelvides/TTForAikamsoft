@@ -9,7 +9,6 @@ public class JDBConnector {
 
     public static Connection getConnection() {
         try {
-            Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection(DatabaseProperty.getConfigFile().getDB_URL(),
                     DatabaseProperty.getConfigFile().getDB_USER(),
                     DatabaseProperty.getConfigFile().getDB_PASS());
@@ -17,8 +16,6 @@ public class JDBConnector {
         } catch (SQLException e) {
             System.err.println(e.getMessage());
             return null;
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
         }
     }
 }
