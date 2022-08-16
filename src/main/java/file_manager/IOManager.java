@@ -14,9 +14,7 @@ public class IOManager {
             String json = IOUtil.toString(br);
             return json;
         } catch (IOException e) {
-            System.err.println("JSON не найден или некорректно указан путь" + "\n" + "EXIT");
-            System.exit(1);
-            return null;
+            throw new IOException("JSON не найден или некорректно указан путь");
         }
     }
 

@@ -1,5 +1,6 @@
 package domain.input.outputData.search;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import responses.interfaces.Response;
 
 import java.util.ArrayList;

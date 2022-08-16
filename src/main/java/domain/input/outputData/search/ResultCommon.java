@@ -1,20 +1,26 @@
 package domain.input.outputData.search;
 
 import dbcommon.entities.Buyer;
+import responses.interfaces.Response;
 
 import java.util.ArrayList;
 
-public class ResultCommon {
+public class ResultCommon implements Response {
 
     private String criteria;
-    private ArrayList<Buyer> results;
+    private ArrayList<Response> results;
 
     public ResultCommon(String criteria) {
         this.criteria = criteria;
         this.results = new ArrayList<>();
     }
 
-    public ArrayList<Buyer> getResults() {
+    @Override
+    public String getType() {
+        return null;
+    }
+
+    public ArrayList<Response> getResults() {
         return results;
     }
 

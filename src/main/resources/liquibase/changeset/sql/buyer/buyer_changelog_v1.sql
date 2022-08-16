@@ -10,6 +10,12 @@ create table buyer
 insert into buyer (name, lastname)
 values ('Андрей', 'Смирнов');
 insert into buyer (name, lastname)
+values ('Виктор', 'Смирнов');
+insert into buyer (name, lastname)
+values ('Евгений', 'Смирнов');
+insert into buyer (name, lastname)
+values ('Сергей', 'Смирнов');
+insert into buyer (name, lastname)
 values ('Евгений', 'Ширяев');
 insert into buyer (name, lastname)
 values ('Александр', 'Макаров');
