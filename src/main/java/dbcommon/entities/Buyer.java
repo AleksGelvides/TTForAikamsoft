@@ -1,6 +1,9 @@
 package dbcommon.entities;
 
-public class Buyer {
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import responses.interfaces.Response;
+
+public class Buyer implements Response {
     private String lastName;
     private String firstName;
 
@@ -23,5 +26,17 @@ public class Buyer {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @JsonIgnoreProperties
+    @Override
+    public String getType() {
+        return null;
+    }
+
+    @JsonIgnoreProperties
+    @Override
+    public Object getResults() {
+        return null;
     }
 }

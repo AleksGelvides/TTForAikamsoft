@@ -70,7 +70,8 @@ public class DataService {
                 result.getResults().addAll(repository.getBuyersByMinPriceAndMaxPrice((MinMaxExpences) criteria));
                 output.addResults(result);
             } else {
-                ResultCommon result = new ResultCommon("Error! Неизвестный критерий: " + criteria.getCriteriaName());
+                ResultCommon result = new ResultCommon(criteria.getCriteriaName());
+                result.getResults().add(new Error("This Criteria not found"));
                 output.addResults(result);
             }
         }

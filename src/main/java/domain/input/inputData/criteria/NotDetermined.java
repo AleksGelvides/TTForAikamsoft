@@ -5,7 +5,7 @@ public class NotDetermined extends Criteria{
     private String fail = "Not found: ";
 
     public NotDetermined(String failJson) {
-        this.fail = fail.concat(failJson);
+        this.fail = fail.concat(failJson + "\"");
     }
 
     public String getFail() {
