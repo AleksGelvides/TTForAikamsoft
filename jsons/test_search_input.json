@@ -1,6 +1,6 @@
 {
   "criterias": [
-    { "lastName": "Макаров" },
+    { "lastName": "Смирнов" },
     { "productName": "Раковина", "minTimes": 5 },
     { "minExpenses": 150000, "maxExpenses": 500000 },
     { "tochno_nerabochii_json" : "null" },
